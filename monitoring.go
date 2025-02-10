@@ -3,5 +3,5 @@ package monitoring
 import "fmt"
 
 func Check() {
-	fmt.Println("Monitoring librabry is working")
+	fmt.Println("Monitoring librabry successfully linked")
 }
