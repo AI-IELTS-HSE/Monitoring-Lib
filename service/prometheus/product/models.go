@@ -1,12 +1,12 @@
 package product
 
 type ProductMetrics struct {
-	HttpMetrics HttpMetrics
+	HttpMetrics *HttpMetrics
 }
 
-var ProdMetrics ProductMetrics
-
-func (pm *ProductMetrics) New(namespace string) *ProductMetrics {
-	pm.HttpMetrics.InitHttpMetrics(namespace, SubSystemProduct)
+func New(namespace string) *ProductMetrics {
+	pm := &ProductMetrics{
+		HttpMetrics: InitHttpMetrics(namespace, SubSystemProduct),
+	}
 	return pm
 }

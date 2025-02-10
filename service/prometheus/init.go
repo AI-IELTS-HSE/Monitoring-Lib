@@ -8,6 +8,6 @@ type MetricModels struct {
 
 func NewMetricModels(namespace string) *MetricModels {
 	return &MetricModels{
-		ProductMetrics: product.ProdMetrics.New(namespace),
+		ProductMetrics: product.New(namespace),
 	}
 }
