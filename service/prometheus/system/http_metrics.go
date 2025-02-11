@@ -1,4 +1,4 @@
-package product
+package system
 
 import "github.com/prometheus/client_golang/prometheus"
 

@@ -24,10 +24,10 @@ func (m Middleware) Handle(next http.Handler) http.Handler {
 		recorder := &statusRecorder{ResponseWriter: w, statusCode: http.StatusOK}
 		next.ServeHTTP(recorder, r)
 
-		m.MetricModels.ProductMetrics.HttpMetrics.HttpStatusCodes.WithLabelValues(r.URL.Path, http.StatusText(recorder.statusCode)).Inc()
+		m.MetricModels.SystemMetrics.HttpMetrics.HttpStatusCodes.WithLabelValues(r.URL.Path, http.StatusText(recorder.statusCode)).Inc()
 
 		duration := time.Since(start).Seconds()
-		m.MetricModels.ProductMetrics.HttpMetrics.HttpDuration.WithLabelValues(r.URL.Path, http.StatusText(recorder.statusCode)).Observe(duration) //.HttpDuration
+		m.MetricModels.SystemMetrics.HttpMetrics.HttpDuration.WithLabelValues(r.URL.Path, http.StatusText(recorder.statusCode)).Observe(duration) //.HttpDuration
 
 	})
 }
